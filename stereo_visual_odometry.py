@@ -394,7 +394,7 @@ class StereoVisualOdometry():
         # Set x, y, and z axes to be on the same scale
         ax.set_box_aspect((np.ptp(x_path), np.ptp(y_path), np.ptp(z_path)))
 
-        ax.plot(x_path, y_path, z_path, c='k')
+        ax.plot(x_path, y_path, z_path, c='k', label='Ground Truth')
         ax.set_xlabel('x')
         ax.set_ylabel('y')
         ax.set_zlabel('z')
@@ -459,8 +459,13 @@ class StereoVisualOdometry():
             x_path = full_traj[:i+2, 0, 3]
             y_path = full_traj[:i+2, 1, 3]
             z_path = full_traj[:i+2, 2, 3]
-            ax.plot(x_path, y_path, z_path, c='m')
-            plt.pause(0.0000000000000000001)
+            ax.plot(x_path, y_path, z_path, c='m', label='Estimated' if i == 0 else "")
+
+            # Only add legend once during the first iteration
+            if i == 0:
+                ax.legend(loc="upper left", bbox_to_anchor=(1, 1))
+
+            plt.pause(1e-30)
 
             cv.imshow('Camera View', left_image)
             cv.waitKey(1)
