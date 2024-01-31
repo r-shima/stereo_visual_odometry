@@ -1,5 +1,5 @@
 # Stereo Visual Odometry
-I implemented stereo visual odometry using the KITTI dataset. More details can be found in my [portfolio post](https://r-shima.github.io/stereo_visual_odometry.html).
+I implemented stereo visual odometry using the KITTI dataset. More details can be found in my [portfolio post](https://r-shima.github.io/stereo-visual-odometry/).
 
 To run the script, use `python3 stereo_visual_odometry.py`.
 ## Demo
